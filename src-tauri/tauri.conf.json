@@ -1,0 +1,73 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Codex Tools",
+  "version": "1.9.0",
+  "identifier": "com.carry.codex-tools",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Codex Tools",
+        "width": 1320,
+        "height": 960,
+        "resizable": true,
+        "fullscreen": false,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "createUpdaterArtifacts": true,
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": [
+          "SimpChinese"
+        ],
+        "customLanguageFiles": {
+          "SimpChinese": "windows/nsis/SimpChinese.nsh"
+        },
+        "displayLanguageSelector": false,
+        "template": "windows/nsis/installer.nsi"
+      },
+      "wix": {
+        "language": {
+          "zh-CN": {
+            "localePath": "windows/wix/zh-CN.wxl"
+          }
+        }
+      }
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [
+      "gen/remote-build"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "dialog": false,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY1N0VFNkFEMTExQ0ZDQjIKUldTeS9Cd1JyZVorWlFseEQ3SEY1MzZDR1dIeWQxRW9jWnB6amNtd2FNbUlUdmxRZ00yU3N2R3YK",
+      "endpoints": [
+        "https://github.com/Barbital11111/codex-tools/releases/latest/download/latest.json"
+      ]
+    }
+  }
+}

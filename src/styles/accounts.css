@@ -1,0 +1,1482 @@
+.cards {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 356px);
+  grid-auto-rows: 432px;
+  gap: 18px;
+  justify-content: center;
+  align-content: start;
+  min-height: 0;
+  overflow: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cards::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.accountGroupsWorkspace {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 0;
+  width: 100%;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.accountUngroupedWorkspace {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px 16px 20px;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--card) 94%, var(--surface-tint) 6%),
+      color-mix(in srgb, var(--card) 88%, transparent)
+    );
+  box-shadow:
+    inset 0 1px var(--surface-highlight-soft),
+    0 10px 24px rgba(24, 38, 58, 0.05);
+  overflow: visible;
+  width: 100%;
+  margin-top: 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 0;
+}
+
+.accountUngroupedHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.accountUngroupedHeading {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.accountUngroupedHeading h3 {
+  margin: 0;
+  color: var(--ink);
+  font: 650 0.98rem/1.2 var(--font-ui);
+  letter-spacing: -0.02em;
+}
+
+.accountUngroupedHeading p {
+  margin: 0;
+  color: var(--subtle);
+  font: 500 0.72rem/1.42 var(--font-ui);
+}
+
+.accountUngroupedGrid {
+  flex-shrink: 0;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 74%, transparent);
+}
+
+.accountUngroupedGrid .cards {
+  margin-top: 0;
+  overflow: visible;
+}
+
+.accountUngroupedGrid .accountCardSelector {
+  top: 12px;
+  left: 12px;
+}
+
+.accountGroupEmptyText {
+  margin: 0;
+  color: var(--subtle);
+  font: 500 0.72rem/1.42 var(--font-ui);
+}
+
+.accountGroupNameInput {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  border: 1px solid color-mix(in srgb, var(--line) 86%, var(--surface-tint) 14%);
+  border-radius: 10px;
+  padding: 0 12px;
+  background: color-mix(in srgb, var(--meta-bg) 46%, transparent);
+  color: var(--ink);
+  font: 600 0.78rem/1.2 var(--font-ui);
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.accountGroupNameInput:focus {
+  border-color: var(--button-primary-border);
+  box-shadow: 0 0 0 4px rgba(255, 143, 56, 0.12);
+}
+
+.accountGroupsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+  gap: 18px;
+  width: 100%;
+  justify-content: stretch;
+  align-items: flex-start;
+  align-content: start;
+}
+
+.accountGroupCard {
+  border: 1px solid color-mix(in srgb, var(--line) 92%, var(--surface-tint) 8%);
+  border-radius: 18px;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  padding: 18px 18px 16px;
+  background: color-mix(in srgb, var(--account-card-bg-start) 98%, var(--surface-tint) 2%);
+  box-shadow:
+    0 1px 2px rgba(28, 43, 68, 0.05),
+    0 10px 18px rgba(28, 43, 68, 0.04);
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  align-self: start;
+}
+
+.accountGroupCard.isExpanded {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.accountGroupCardHeader {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.accountGroupToggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.accountGroupToggle svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.accountGroupIdentity {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.accountGroupIdentity strong {
+  color: var(--ink);
+  font: 650 1rem/1.2 var(--font-ui);
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupIdentity span {
+  color: var(--subtle);
+  font: 600 0.68rem/1.2 var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.accountGroupActions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.accountGroupActions button {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 0.72rem;
+}
+
+.accountGroupViewMode {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  min-height: 30px;
+  padding: 2px;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-hover-bg) 62%, transparent);
+}
+
+.accountGroupViewMode button {
+  min-height: 24px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--subtle);
+  font: 700 0.68rem/1 var(--font-ui);
+}
+
+.accountGroupViewMode button:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--card) 84%, var(--surface-tint) 16%);
+  color: var(--ink);
+  transform: none;
+}
+
+.accountGroupViewMode button.isActive {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent),
+    0 1px 3px rgba(28, 43, 68, 0.08);
+}
+
+.accountGroupPreview {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.accountGroupAddPanel {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, var(--surface-tint) 18%);
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--meta-bg) 54%, transparent),
+      color-mix(in srgb, var(--card) 92%, transparent)
+    );
+}
+
+.accountGroupAddPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.accountGroupAddPanelHeader strong {
+  color: var(--ink);
+  font: 650 0.8rem/1.2 var(--font-ui);
+  letter-spacing: -0.01em;
+}
+
+.accountGroupAddPanelHeader button {
+  min-height: 28px;
+  padding: 0 10px;
+  font-size: 0.7rem;
+}
+
+.accountGroupAddEntries {
+  display: grid;
+  gap: 8px;
+}
+
+.accountGroupAddEntry {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  text-align: left;
+  box-shadow: inset 0 1px var(--surface-highlight-faint);
+}
+
+.accountGroupAddEntry:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--brand-cool) 26%, var(--line) 74%);
+  background: color-mix(in srgb, var(--surface-hover-bg) 72%, transparent);
+  transform: none;
+}
+
+.accountGroupAddIdentity {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.accountGroupAddIdentity strong {
+  min-width: 0;
+  color: var(--ink);
+  font: 650 0.78rem/1.2 var(--font-ui);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupAddBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.accountGroupAddBadges span,
+.accountGroupAddBadges em {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-hover-bg) 74%, transparent);
+  color: color-mix(in srgb, var(--subtle) 80%, var(--ink) 20%);
+  font: 700 0.58rem/1 var(--font-ui);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.accountGroupAddMeta {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  color: var(--subtle);
+  font: 650 0.62rem/1.2 var(--font-mono);
+}
+
+.accountGroupAddMeta strong {
+  color: var(--ink);
+  font: 700 0.64rem/1.2 var(--font-mono);
+}
+
+.accountGroupCompactPreview {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.accountGroupCompactEntry {
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 13px;
+  padding: 9px 10px;
+  background: color-mix(in srgb, var(--meta-bg) 42%, transparent);
+  display: grid;
+  gap: 7px;
+}
+
+.accountGroupCompactIdentity {
+  min-width: 0;
+  display: grid;
+  gap: 7px;
+}
+
+.accountGroupCompactHeader {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.accountGroupCompactHeader .accountGroupCurrentGlass {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.accountGroupCompactIdentity strong {
+  min-width: 0;
+  color: var(--ink);
+  font: 650 0.76rem/1.2 var(--font-ui);
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupCompactBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.accountGroupCompactBadges span,
+.accountGroupCompactBadges em {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-hover-bg) 74%, transparent);
+  color: color-mix(in srgb, var(--subtle) 80%, var(--ink) 20%);
+  font: 700 0.58rem/1 var(--font-ui);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.accountGroupCompactQuotaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.accountGroupCompactQuota {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.accountGroupCompactQuotaTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  color: var(--subtle);
+  font: 700 0.58rem/1 var(--font-ui);
+  letter-spacing: 0.02em;
+}
+
+.accountGroupCompactQuotaTop strong {
+  color: var(--ink);
+  font: 700 0.61rem/1 var(--font-mono);
+}
+
+.accountGroupCompactQuotaTrack {
+  height: 5px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bar-track) 86%, transparent);
+}
+
+.accountGroupCompactQuotaTrack span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.accountGroupCompactQuota-hot .accountGroupCompactQuotaTrack span {
+  background: rgba(232, 157, 91, 0.94);
+}
+
+.accountGroupCompactQuota-cool .accountGroupCompactQuotaTrack span {
+  background: rgba(93, 183, 126, 0.94);
+}
+
+.accountGroupCompactQuota small {
+  color: var(--subtle);
+  font: 600 0.54rem/1.2 var(--font-ui);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupCompactRelay {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  color: var(--subtle);
+  font: 650 0.62rem/1.2 var(--font-mono);
+}
+
+.accountGroupCompactRelay span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupCompactRelay strong {
+  color: var(--ink);
+}
+
+.accountGroupUsageRow {
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 13px;
+  padding: 12px 13px;
+  background: color-mix(in srgb, var(--meta-bg) 45%, transparent);
+  display: grid;
+  gap: 11px;
+}
+
+.accountGroupEntryActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.accountGroupEntryActions button {
+  min-height: 32px;
+  font-size: 0.76rem;
+}
+
+.accountGroupEntryActions.isCompact {
+  min-height: 30px;
+  justify-content: flex-start;
+}
+
+.accountGroupLaunchButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 116px;
+  padding-inline: 12px;
+}
+
+.accountGroupLaunchButton .iconGlyph {
+  width: 14px;
+  height: 14px;
+}
+
+.accountGroupUsageIdentity {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.accountGroupUsageIdentity strong {
+  min-width: 0;
+  max-width: 100%;
+  color: var(--ink);
+  font: 650 0.84rem/1.2 var(--font-ui);
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupUsageIdentity span,
+.accountGroupUsageIdentity em {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-hover-bg) 74%, transparent);
+  color: color-mix(in srgb, var(--subtle) 80%, var(--ink) 20%);
+  font: 700 0.64rem/1 var(--font-ui);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.accountGroupUsageIdentity .accountGroupCurrentGlass {
+  flex: 0 0 auto;
+}
+
+.accountGroupQuotaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.accountGroupQuota {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.accountGroupQuotaTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--subtle);
+  font: 700 0.7rem/1 var(--font-ui);
+  letter-spacing: 0.02em;
+}
+
+.accountGroupQuotaTop strong {
+  color: var(--ink);
+  font: 700 0.74rem/1 var(--font-mono);
+}
+
+.accountGroupQuotaTrack {
+  height: 7px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bar-track) 86%, transparent);
+}
+
+.accountGroupQuotaTrack span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.accountGroupQuota-hot .accountGroupQuotaTrack span {
+  background: rgba(232, 157, 91, 0.94);
+}
+
+.accountGroupQuota-cool .accountGroupQuotaTrack span {
+  background: rgba(93, 183, 126, 0.94);
+}
+
+.accountGroupQuota small {
+  color: var(--subtle);
+  font: 600 0.64rem/1.2 var(--font-ui);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupRelayMeta {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  color: var(--subtle);
+  font: 650 0.74rem/1.2 var(--font-mono);
+}
+
+.accountGroupRelayMeta span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountGroupRelayMeta strong {
+  color: var(--ink);
+}
+
+.accountGroupNestedCards {
+  display: grid;
+  grid-template-columns: repeat(3, 356px);
+  gap: 18px;
+  justify-content: center;
+  padding-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+}
+
+.accountGroupMemberCard {
+  width: 356px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.accountGroupNestedSlot {
+  position: relative;
+  width: 356px;
+  min-height: 432px;
+  height: 432px;
+}
+
+.accountGroupStaticMark {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  background: color-mix(in srgb, var(--meta-bg) 52%, transparent);
+  box-shadow: inset 0 1px var(--surface-highlight-soft);
+}
+
+@media (max-width: 1220px) {
+  .accountGroupsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .accountGroupNestedCards {
+    grid-template-columns: repeat(2, 356px);
+  }
+}
+
+@media (max-width: 840px) {
+  .accountGroupsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .accountGroupNestedCards {
+    grid-template-columns: 356px;
+  }
+}
+
+.dangerGhost {
+  color: var(--error-text);
+  border-color: color-mix(in srgb, var(--danger) 24%, var(--line) 76%);
+  background: rgba(242, 106, 119, 0.08);
+}
+
+.accountCardSlot {
+  position: relative;
+  width: 356px;
+  min-height: 432px;
+  height: 432px;
+}
+
+.accountCardSlot.isSelected .accountCard {
+  border-color: color-mix(in srgb, var(--brand-hot) 48%, var(--brand-cool) 52%);
+  box-shadow:
+    0 14px 28px rgba(28, 43, 68, 0.08),
+    0 0 0 1px color-mix(in srgb, var(--brand-hot) 22%, transparent);
+}
+
+.accountCardSelector {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, var(--surface-tint) 18%);
+  background: color-mix(in srgb, var(--card) 96%, transparent);
+  box-shadow: 0 6px 14px rgba(18, 34, 54, 0.08);
+}
+
+.accountCardSelector input {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--button-primary-bg);
+}
+
+.emptyState {
+  border: 1px dashed var(--empty-border);
+  border-radius: 18px;
+  padding: 34px;
+  text-align: left;
+  color: var(--subtle);
+  width: 356px;
+  min-height: 240px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--card) 94%, var(--surface-tint) 6%),
+    color-mix(in srgb, var(--card) 88%, transparent)
+  );
+}
+
+.emptyState h3 {
+  margin: 0;
+  color: var(--ink);
+  font: 650 1.2rem/1.2 var(--font-ui);
+  letter-spacing: -0.02em;
+}
+
+.emptyState p {
+  margin: 10px 0 0;
+  max-width: 34ch;
+  font: 500 0.86rem/1.6 var(--font-ui);
+}
+
+.accountCard {
+  --tone-a: rgba(129, 158, 201, 0.62);
+  border: 1px solid color-mix(in srgb, var(--line) 92%, var(--surface-tint) 8%);
+  border-radius: 18px;
+  width: 356px;
+  min-height: 432px;
+  height: 432px;
+  padding: 18px 18px 16px;
+  background: color-mix(in srgb, var(--account-card-bg-start) 98%, var(--surface-tint) 2%);
+  box-shadow:
+    0 1px 2px rgba(28, 43, 68, 0.05),
+    0 10px 18px rgba(28, 43, 68, 0.04);
+  animation: riseIn 320ms ease both;
+  position: relative;
+  overflow: clip;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accountCard.isEditingApi {
+  gap: 12px;
+}
+
+.accountCard::before {
+  content: none;
+}
+
+.accountCard.isCurrent {
+  border-color: color-mix(in srgb, var(--stamp-current-border) 56%, var(--line) 44%);
+  box-shadow:
+    0 14px 28px rgba(28, 43, 68, 0.08),
+    0 0 0 1px color-mix(in srgb, var(--stamp-current-border) 28%, transparent);
+}
+
+.accountCard.isCurrent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--tone-a) 20%, transparent), transparent 42%),
+    linear-gradient(180deg, color-mix(in srgb, var(--stamp-current-bg) 12%, transparent), transparent 36%);
+}
+
+.accountCard:hover,
+.accountCard:focus-within,
+.accountCard.isSwitching {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 18px rgba(28, 43, 68, 0.06),
+    0 1px 3px rgba(28, 43, 68, 0.06);
+  border-color: color-mix(in srgb, var(--line) 86%, var(--tone-a) 14%);
+}
+
+.accountCard.tone-team {
+  --tone-a: rgba(49, 206, 192, 0.84);
+  --stamp-plan-color: #0f6f68;
+  --stamp-plan-border: rgba(56, 190, 178, 0.3);
+  --stamp-plan-bg: rgba(118, 231, 221, 0.14);
+}
+
+.accountCard.tone-pro {
+  --tone-a: rgba(255, 134, 66, 0.88);
+  --stamp-plan-color: #7d3f13;
+  --stamp-plan-border: rgba(226, 131, 60, 0.28);
+  --stamp-plan-bg: rgba(255, 164, 95, 0.12);
+}
+
+.accountCard.tone-plus {
+  --tone-a: rgba(160, 128, 255, 0.86);
+  --stamp-plan-color: #5f4294;
+  --stamp-plan-border: rgba(158, 122, 242, 0.28);
+  --stamp-plan-bg: rgba(191, 151, 255, 0.12);
+}
+
+.accountCard.tone-api {
+  --tone-a: rgba(88, 152, 255, 0.84);
+  --stamp-plan-color: #305e9f;
+  --stamp-plan-border: rgba(88, 152, 255, 0.28);
+  --stamp-plan-bg: rgba(88, 152, 255, 0.12);
+}
+
+.accountCard.tone-enterprise {
+  --tone-a: rgba(255, 210, 116, 0.86);
+}
+
+.accountCard.tone-business {
+  --tone-a: rgba(118, 184, 255, 0.84);
+}
+
+.accountCard.tone-free {
+  --tone-a: rgba(166, 172, 192, 0.78);
+  --stamp-plan-color: #4f5f7c;
+  --stamp-plan-border: rgba(135, 147, 174, 0.28);
+  --stamp-plan-bg: rgba(187, 197, 219, 0.12);
+}
+
+.accountCard.tone-unknown {
+  --tone-a: rgba(178, 183, 202, 0.72);
+  --stamp-plan-color: #5b6582;
+  --stamp-plan-border: rgba(154, 165, 191, 0.24);
+  --stamp-plan-bg: rgba(196, 205, 223, 0.12);
+}
+
+:root[data-theme="dark"] .accountCard.tone-team {
+  --tone-a: rgba(73, 224, 209, 0.9);
+  --stamp-plan-color: #c5fff8;
+  --stamp-plan-border: rgba(89, 226, 212, 0.66);
+  --stamp-plan-bg: rgba(55, 193, 178, 0.24);
+}
+
+:root[data-theme="dark"] .accountCard.tone-pro {
+  --tone-a: rgba(255, 152, 89, 0.92);
+  --stamp-plan-color: #ffe0c7;
+  --stamp-plan-border: rgba(255, 170, 115, 0.68);
+  --stamp-plan-bg: rgba(219, 118, 54, 0.26);
+}
+
+:root[data-theme="dark"] .accountCard.tone-plus {
+  --tone-a: rgba(184, 145, 255, 0.92);
+  --stamp-plan-color: #f0e0ff;
+  --stamp-plan-border: rgba(181, 146, 255, 0.7);
+  --stamp-plan-bg: rgba(130, 95, 219, 0.26);
+}
+
+:root[data-theme="dark"] .accountCard.tone-api {
+  --tone-a: rgba(118, 178, 255, 0.94);
+  --stamp-plan-color: #e6f1ff;
+  --stamp-plan-border: rgba(118, 178, 255, 0.68);
+  --stamp-plan-bg: rgba(73, 125, 214, 0.26);
+}
+
+:root[data-theme="dark"] .accountCard.tone-free {
+  --tone-a: rgba(176, 188, 214, 0.84);
+  --stamp-plan-color: #e4ebff;
+  --stamp-plan-border: rgba(168, 182, 220, 0.64);
+  --stamp-plan-bg: rgba(120, 133, 168, 0.26);
+}
+
+:root[data-theme="dark"] .accountCard.tone-enterprise {
+  --tone-a: rgba(255, 214, 121, 0.92);
+}
+
+:root[data-theme="dark"] .accountCard.tone-business {
+  --tone-a: rgba(132, 191, 255, 0.92);
+}
+
+:root[data-theme="dark"] .accountCard.tone-unknown {
+  --tone-a: rgba(186, 196, 223, 0.88);
+  --stamp-plan-color: #eef2ff;
+  --stamp-plan-border: rgba(172, 184, 220, 0.66);
+  --stamp-plan-bg: rgba(112, 126, 163, 0.28);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.cardIdentity {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.cardBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 25px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: 700 0.65rem/1 var(--font-ui);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.planBadge {
+  color: var(--stamp-plan-color);
+  border-color: var(--stamp-plan-border);
+  background: var(--stamp-plan-bg);
+}
+
+.apiBadge,
+.stateBadge {
+  min-height: 25px;
+  padding: 0 10px;
+}
+
+.stateBadge {
+  color: color-mix(in srgb, var(--ink) 72%, var(--subtle) 28%);
+  border-color: color-mix(in srgb, var(--line) 82%, var(--surface-tint) 18%);
+  background: color-mix(in srgb, var(--surface-hover-bg) 62%, transparent);
+}
+
+.planBadgeButton {
+  min-height: 25px;
+  padding: 0 10px;
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+.planBadgeButton:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.planBadgeButton.isSelected {
+  border-color: color-mix(in srgb, var(--stamp-plan-color) 42%, var(--stamp-plan-border) 58%);
+  background: color-mix(in srgb, var(--stamp-plan-bg) 72%, var(--surface-highlight) 28%);
+  color: color-mix(in srgb, var(--stamp-plan-color) 92%, var(--ink) 8%);
+}
+
+.planBadgeButton.isCurrent {
+  border-color: color-mix(in srgb, var(--stamp-current-border) 52%, var(--stamp-plan-border) 48%);
+}
+
+.planCurrentGlass,
+.accountGroupCurrentGlass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 18px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 165, 36, 0.28);
+  background:
+    linear-gradient(135deg, rgba(255, 246, 191, 0.56), rgba(255, 216, 97, 0.24)),
+    rgba(255, 237, 148, 0.18);
+  color: #7d5600;
+  font: 800 0.52rem/1 var(--font-ui);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-style: normal;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.68),
+    0 8px 18px rgba(220, 175, 49, 0.14);
+  backdrop-filter: blur(12px) saturate(135%);
+  -webkit-backdrop-filter: blur(12px) saturate(135%);
+}
+
+:root[data-theme="dark"] .planCurrentGlass,
+:root[data-theme="dark"] .accountGroupCurrentGlass {
+  border-color: rgba(255, 221, 120, 0.34);
+  background:
+    linear-gradient(135deg, rgba(255, 241, 168, 0.3), rgba(255, 196, 56, 0.18)),
+    rgba(255, 218, 92, 0.12);
+  color: #ffe69a;
+  box-shadow:
+    inset 0 1px rgba(255, 250, 220, 0.18),
+    0 10px 22px rgba(194, 142, 12, 0.22);
+}
+
+.cardIdentity h3 {
+  margin: 0;
+  font: 650 1.02rem/1.22 var(--font-ui);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardIdentity h3.nameCurrent {
+  color: color-mix(in srgb, var(--ink) 92%, var(--tone-a) 8%);
+}
+
+.cardAliasEditor {
+  display: block;
+}
+
+.cardAliasEditor input {
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 10px;
+  padding: 0 12px;
+  background: color-mix(in srgb, var(--card) 90%, var(--surface-tint) 10%);
+  color: var(--ink);
+  font: 600 0.8rem/1 var(--font-ui);
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.cardAliasEditor input:focus {
+  border-color: var(--button-primary-border);
+  box-shadow: 0 0 0 4px rgba(255, 143, 56, 0.12);
+}
+
+.usageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-height: 176px;
+  border: 1px solid color-mix(in srgb, var(--line) 90%, var(--surface-tint) 10%);
+  border-radius: 15px;
+  padding: 14px 12px;
+  background: color-mix(in srgb, var(--body-bg) 14%, var(--surface-tint) 86%);
+  align-items: start;
+}
+
+.usageGrid.isFreePlan {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.relayInfoPanel {
+  min-height: 176px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 90%, var(--surface-tint) 10%);
+  border-radius: 15px;
+  padding: 14px 15px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--body-bg) 14%, var(--surface-tint) 86%),
+      color-mix(in srgb, var(--meta-bg) 46%, transparent)
+    );
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.relayEditPanel {
+  min-height: 244px;
+  overflow: visible;
+  border: 1px solid color-mix(in srgb, var(--line) 90%, var(--surface-tint) 10%);
+  border-radius: 15px;
+  padding: 12px 14px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--body-bg) 14%, var(--surface-tint) 86%),
+      color-mix(in srgb, var(--meta-bg) 46%, transparent)
+  );
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.relayEditField {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.relayEditField span {
+  min-width: 0;
+  color: var(--subtle);
+  font: 700 0.67rem/1.2 var(--font-ui);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.relayEditField input {
+  width: 100%;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, var(--surface-tint) 12%);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  color: var(--ink);
+  font: 600 0.83rem/1.3 var(--font-mono);
+}
+
+.relayEditField input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--tone-a) 56%, var(--line) 44%);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tone-a) 10%, transparent);
+}
+
+.relayEditActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.relayInfoRow {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.relayInfoRow span {
+  min-width: 0;
+  color: var(--subtle);
+  font: 700 0.67rem/1.2 var(--font-ui);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.relayInfoRow strong {
+  min-width: 0;
+  max-width: 100%;
+  color: var(--ink);
+  font: 650 0.82rem/1.4 var(--font-mono);
+  letter-spacing: 0;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.accountMetaPanel {
+  display: grid;
+  gap: 10px;
+  min-height: 80px;
+  align-content: start;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, var(--surface-tint) 12%);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--meta-bg) 38%, transparent);
+}
+
+.accountMetaRow {
+  display: grid;
+  gap: 8px;
+}
+
+.accountMetaLabel {
+  color: var(--subtle);
+  font: 700 0.67rem/1.2 var(--font-ui);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.accountMetaValue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  color: var(--ink);
+  font: 600 0.76rem/1.35 var(--font-ui);
+}
+
+.accountMetaEmpty {
+  color: var(--subtle);
+}
+
+.accountTagSummary {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.accountTagList {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.accountTagChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  background: color-mix(in srgb, var(--surface-hover-bg) 62%, transparent);
+  color: color-mix(in srgb, var(--ink) 84%, var(--subtle) 16%);
+  font: 700 0.67rem/1 var(--font-ui);
+}
+
+.accountTagEditor {
+  display: grid;
+  gap: 8px;
+}
+
+.accountTagInput {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  border: 1px solid color-mix(in srgb, var(--line) 84%, var(--surface-tint) 16%);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--meta-bg) 56%, var(--surface-tint) 44%);
+  color: var(--ink);
+  font: 500 0.78rem/1.4 var(--font-ui);
+  outline: none;
+}
+
+.accountTagInput:focus {
+  border-color: color-mix(in srgb, var(--brand-cool) 54%, var(--line) 46%);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-cool) 14%, transparent);
+}
+
+.accountMetaActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.accountMetaInlineAction {
+  min-height: 30px;
+  padding-inline: 12px;
+  font-size: 0.74rem;
+}
+
+.usageDial {
+  display: grid;
+  justify-items: center;
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  gap: 9px;
+  padding: 0 8px;
+  min-width: 0;
+  background: transparent;
+}
+
+.usageDialLabel {
+  font: 650 0.74rem/1 var(--font-ui);
+  color: color-mix(in srgb, var(--ink) 92%, var(--surface-tint) 8%);
+  text-align: center;
+  margin: 0;
+}
+
+.usageDialChart {
+  position: relative;
+  width: 78px;
+  height: 78px;
+}
+
+.usageDialSvg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.usageDialTrack,
+.usageDialProgress {
+  fill: none;
+  stroke-width: 8;
+}
+
+.usageDialTrack {
+  stroke: color-mix(in srgb, var(--bar-track) 84%, var(--surface-tint) 16%);
+}
+
+.usageDialProgress {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 280ms ease;
+}
+
+.usageDial-hot .usageDialProgress {
+  stroke: rgba(242, 156, 86, 0.92);
+}
+
+.usageDial-cool .usageDialProgress {
+  stroke: rgba(84, 199, 191, 0.92);
+}
+
+.usageDialCenter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.usageDialCenter strong {
+  font: 700 0.84rem/1 var(--font-mono);
+  color: color-mix(in srgb, var(--ink) 92%, var(--surface-tint) 8%);
+}
+
+.usageDialCenter span {
+  color: var(--subtle);
+  font: 600 0.52rem/1 var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.usageDialReset {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  text-align: center;
+  align-content: start;
+  min-height: 40px;
+}
+
+.usageDialReset span {
+  color: var(--subtle);
+  font: 600 0.58rem/1.1 var(--font-ui);
+}
+
+.usageDialReset strong {
+  color: color-mix(in srgb, var(--ink) 72%, var(--subtle) 28%);
+  font: 600 0.6rem/1.2 var(--font-ui);
+  letter-spacing: -0.01em;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.errorText {
+  margin: 0;
+  color: var(--error-text);
+  font: 500 0.72rem/1.3 var(--font-ui);
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardFooter {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.cardLaunchButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding-inline: 14px;
+  white-space: nowrap;
+  font-size: 0.78rem;
+}
+
+.cardLaunchButton .iconGlyph {
+  width: 14px;
+  height: 14px;
+}
+
+.cardEditIcon,
+.cardDeleteIcon,
+.cardReauthorizeIcon,
+.cardExportIcon {
+  position: static;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  padding: 0;
+  flex: 0 0 auto;
+  border-color: color-mix(in srgb, var(--line) 88%, var(--surface-tint) 12%);
+  background: var(--surface-hover-bg);
+  color: color-mix(in srgb, var(--subtle) 84%, var(--ink) 16%);
+}
+
+.cardExportIcon .iconGlyph,
+.cardReauthorizeIcon .iconGlyph,
+.cardEditIcon .iconGlyph,
+.cardDeleteIcon .iconGlyph {
+  width: 16px;
+  height: 16px;
+}
+
+.cardDeleteIcon.isPending {
+  border-color: color-mix(in srgb, var(--danger) 34%, var(--line) 66%);
+  background: rgba(242, 106, 119, 0.08);
+  color: var(--error-text);
+}

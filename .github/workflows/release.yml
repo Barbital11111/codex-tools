@@ -1,0 +1,121 @@
+name: Release Tauri App
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag (example: v0.1.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve release metadata
+        id: release_meta
+        shell: pwsh
+        run: |
+          $tag = if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            "${{ github.event.inputs.release_tag }}"
+          } else {
+            "${{ github.ref_name }}"
+          }
+
+          $lines = Get-Content "changelog.md"
+          $needle = "- $tag"
+          $startIndex = -1
+
+          for ($i = 0; $i -lt $lines.Count; $i++) {
+            if ($lines[$i].Trim() -eq $needle) {
+              $startIndex = $i
+              break
+            }
+          }
+
+          $bodyLines = @()
+          if ($startIndex -ge 0) {
+            for ($i = $startIndex + 1; $i -lt $lines.Count; $i++) {
+              if ($lines[$i] -match '^- v') {
+                break
+              }
+              $bodyLines += $lines[$i]
+            }
+          }
+
+          if ($bodyLines.Count -eq 0) {
+            $releaseBody = @"
+          ## $tag
+
+          Automated Windows release with updater assets.
+          "@
+          } else {
+            $normalized = ($bodyLines | ForEach-Object {
+              if ($_ -match '^  ') {
+                $_.Substring(2)
+              } else {
+                $_
+              }
+            }) -join "`n"
+
+            $releaseBody = @"
+          ## $tag
+
+          $normalized
+          "@
+          }
+
+          "tag=$tag" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "name=Codex Tools $tag" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "body<<EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          $releaseBody | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "EOF" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Validate updater signing secrets
+        shell: bash
+        run: |
+          if [ -z "${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}" ]; then
+            echo "::error::Missing TAURI_SIGNING_PRIVATE_KEY secret. Tauri updater assets (latest.json / .sig) cannot be generated."
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build and publish release
+        uses: tauri-apps/tauri-action@v0.6.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          tagName: ${{ steps.release_meta.outputs.tag }}
+          releaseName: ${{ steps.release_meta.outputs.name }}
+          releaseBody: ${{ steps.release_meta.outputs.body }}
+          releaseDraft: false
+          prerelease: false
+          includeUpdaterJson: true
+          updaterJsonPreferNsis: true
+          args: ""
